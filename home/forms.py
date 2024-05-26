@@ -26,4 +26,4 @@ from .models import Sales
 class SaleForm(forms.ModelForm):
     class Meta:
         model = Sales
-        fields = ['product', 'quantity', 'customer_name', 'receipt_img']
+        fields = ['order_id','product', 'quantity', 'customer_name','order_date', 'receipt_img']

@@ -156,6 +156,43 @@
         .btn:hover {
             background-color: #0056b3;
         }
+        @media (max-width: 600px) {
+
+            .container {
+                width: 100%;
+                padding: 0px;
+            }
+            .header {
+                padding: 10px;
+                font-size: 10px;
+            }
+            .content {
+                padding: 10px;
+                margin: 10px;
+            }
+            .username {
+                font-size: 14px;
+                margin-top: 5px;
+            }
+            .add-product-button, .btn {
+                margin: 0px;
+                padding: 0px;
+                width: 100%;
+                font-size: 16px;
+            }
+            .profile{
+                display: none;
+            }
+            .irresponsive{
+                display: none;
+            }
+            .theme-switcher {
+            position: absolute;
+            top: 49px;
+            right: -20px;
+            transform: rotate(0deg);
+        }
+        }
     </style>
 </head>
 <body>
@@ -163,7 +200,7 @@
         <h1>Sales Database Management System</h1>
     </div>
     <img src="../static/profile.jpeg" alt="" class="profile">
-    <div class="username">
+    <div class="username irresponsive">
         {{ request.user.username }}
     </div>
     <a href="{% url 'logout' %}" class="logoof">
@@ -182,30 +219,30 @@
         <p>Company Name : {{ request.user.username }}</p>
         <a href="{% url 'add_product' %}" class="add-product-button">Add Product</a>
         <div class="btn-container">
-            <a href="{% url 'streamlit_view' %}" target="_blank" class="btn">Visualize Data</a>
+            <a href="{% url 'streamlit_view' %}" target="_blank" class="btn irresponsive">Visualize Data</a>
         </div>
         <!-- Display sales -->
         <h2>Sales</h2>
         <table>
             <thead>
                 <tr>
-                    <th>Order ID</th>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Customer Name</th>
-                    <th>Order Date</th>
-                    <th>Receipt</th>
+                    <th class="irresponsive">Order ID</th>
+                    <th class="responsive">Product</th>
+                    <th class="responsive">Quantity</th>
+                    <th class="responsive">Customer Name</th>
+                    <th class="irresponsive">Order Date</th>
+                    <th class="irresponsive">Receipt</th>
                 </tr>
             </thead>
             <tbody>
                 {% for sale in sales %}
                 <tr>
-                    <td>{{ sale.order_id }}</td>
-                    <td>{{ sale.product }}</td>
-                    <td>{{ sale.quantity }}</td>
-                    <td>{{ sale.customer_name }}</td>
-                    <td>{{ sale.order_date }}</td>
-                    <td><a href="{{ sale.receipt_img.url }}" target="_blank">Show Receipt</a></td>
+                    <td class="irresponsive">SDMS/{{request.user.username}}/{{ sale.order_id }}</td>
+                    <td class="responsive">{{ sale.product }}</td>
+                    <td class="responsive">{{ sale.quantity }}</td>
+                    <td class="responsive">{{ sale.customer_name }}</td>
+                    <td class="irresponsive">{{ sale.order_date }}</td>
+                    <td class="irresponsive"><a href="{{ sale.receipt_img.url }}" target="_blank">Show Receipt</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
