@@ -1,0 +1,6 @@
+Order ID,Product,Quantity,Price per Unit,Order Date,Customer Name,Customer Email,Address,City,Postal Code
+1,Laptop,1,800,2024-05-01,John Doe,johndoe@example.com,123 Main St,New York,10001
+2,Mouse,2,20,2024-05-02,Jane Smith,janesmith@example.com,456 Elm St,San Francisco,94103
+3,Keyboard,1,50,2024-05-03,Michael Johnson,michaeljohnson@example.com,789 Oak St,Los Angeles,90001
+4,Monitor,1,300,2024-05-04,Emily Brown,emilybrown@example.com,101 Pine St,Chicago,60601
+5,Headphones,2,50,2024-05-05,Chris Wilson,chriswilson@example.com,202 Maple St,Miami,33101
