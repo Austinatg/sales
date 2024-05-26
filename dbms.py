@@ -1,6 +1,6 @@
 import sqlite3
 import requests
-print({{ request.user.username }})
+# print({{ request.user.username }})
 
 # Connect to the SQLite database
 conn = sqlite3.connect('db.sqlite3')
@@ -17,7 +17,7 @@ tables = cursor.fetchall()
 
 # Print the table names
 for table in tables:
-    print(table[6])
+    print(table)
 
 # Close the cursor and the connection
 cursor.close()
