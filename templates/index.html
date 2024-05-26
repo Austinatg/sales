@@ -138,6 +138,24 @@
         .btn-container {
             margin-top: 20px;
         }
+        .btn {
+            display: block;
+            margin-top: 20px;
+            padding: 15px 30px; /* Increase padding */
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px; /* Increase font size */
+            font-weight: bold; /* Add font weight */
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -164,7 +182,7 @@
         <p>Company Name : {{ request.user.username }}</p>
         <a href="{% url 'add_product' %}" class="add-product-button">Add Product</a>
         <div class="btn-container">
-            <a href="http://localhost:8501" target="_blank" class="btn">Visualize Data</a>
+            <a href="{% url 'streamlit_view' %}" target="_blank" class="btn">Visualize Data</a>
         </div>
         <!-- Display sales -->
         <h2>Sales</h2>

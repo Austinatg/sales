@@ -4,6 +4,7 @@ from home import views
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import streamlit_view
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
     path('', views.home_view,name="home"),
@@ -14,7 +15,11 @@ urlpatterns = [
     path('streamlit/', streamlit_view, name='streamlit_view'),
     path('sales-data/', views.sales_data, name='sales_data'),
     path('api/salesdata/', views.get_sales_data, name='sales_data'),
-    path('get_current_username/', views.get_current_username, name='get_current_username')
+    path('get_current_username/', views.get_current_username, name='get_current_username'),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/get_current_username/', views.get_current_username, name='get_current_username'),
+    path('streamlit-app/', views.streamlit_app, name='streamlit_app')
     # path('api-token-auth/', views.obtain_auth_token),
 ]
 

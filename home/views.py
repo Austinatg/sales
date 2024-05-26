@@ -31,9 +31,11 @@ def loginuser(request):
             login(request, user)
             return redirect('/')
         else:
-            return render(request, 'login.html') 
+            messages.error(request, "Invalid username or password.")
+            return render(request, 'login.html', {'invalid_credentials': True}) 
+            # Pass a context variable to indicate authentication error
 
-    return render(request, 'login.html')
+    return render(request, 'login.html', {'invalid_credentials': False}) 
 
 def logoutuser(request):
     logout(request)
@@ -77,7 +79,7 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('user_name')
+            username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}!')
             # return redirect('login')
         else:
@@ -151,6 +153,11 @@ from rest_framework.response import Response
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
+@login_required
 def get_current_username(request):
     username = request.user.username
     return Response({'username': username})
+
+@login_required
+def streamlit_app(request):
+    return render(request, 'streamlit_view.html')
